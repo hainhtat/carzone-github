@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% block title %}| home{% endblock %}
 {% block content%}
 {% load static %}
 {% load humanize %}
@@ -10,6 +10,7 @@
             <div class="carousel-item banner-max-height active item-bg">
                 <img class="d-block w-100 h-100" src="{% static 'img/car-1.jpg' %}" alt="banner">
                 <div class="carousel-content container banner-info-2 bi-2 text-left">
+                    {% include 'includes/messages.html' %}
                     <h3>Wow Factor Standard</h3>
                     <h5>Allow us to guide you through the innovative stress<br>
                         free approach in finding your dream car.</h5>
@@ -179,14 +180,33 @@
                 </div>    
             {% endfor %}
             </div>
-            <div class="slick-btn">
-                <div class="slick-prev slick-arrow-buton sab-4">
-                    <i class="fa fa-angle-left"></i>
-                </div>
-                <div class="slick-next slick-arrow-buton sab-3">
-                    <i class="fa fa-angle-right"></i>
-                </div>
+            <div class="pagination-box p-box-2 text-center">
+                <nav aria-label="Page navigation example">
+                    {% if featured_cars.has_other_pages %}
+                        <ul class="pagination">
+                        {% if featured_cars.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{featured_cars.previous_page_number}}"><i class="fa fa-angle-left"></i></a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#"><i class="fa fa-angle-left"></i></a>
+                            </li>
+                        {% endif %}
+                        {% if featured_cars.has_next%}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{featured_cars.next_page_number}}"><i class="fa fa-angle-right"></i></a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#"><i class="fa fa-angle-right"></i></a>
+                            </li>
+                        {% endif %}
+                        </ul>
+                    {% endif %}
+                </nav>
             </div>
+        </div>
         </div>
     </div>
 </div>
