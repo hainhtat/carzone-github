@@ -26,7 +26,7 @@ SECRET_KEY = '_n5is1ug6^1c-(c^@s(7_=6#4k1e-)beq^ogg=4#m9kyiz*8v^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['pacific-refuge-87733.herokuapp.com']
 
 LOGIN_REDIRECT_URL = 'dashboard'
 # Application definition
