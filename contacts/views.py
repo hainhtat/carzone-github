@@ -19,7 +19,7 @@ def inquiry(request):
         message = request.POST['message']
 
         if request.user.is_authenticated:
-            user_id = request.user.id
+            user_id = request.user_id
             has_contacted = Contact.objects.all().filter(car_id=car_id, user_id=user_id)
             if has_contacted:
                 messages.error(request, 'You have already made an inquiry.')
